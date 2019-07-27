@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import AppView from '../../presentational/AppView/AppView';
 
@@ -7,6 +8,8 @@ import getPositionAndDurations from './getPositionAndDurations/getPositionAndDur
 import getInitialUnfilteredPlaceList from './getInitialUnfilteredPlaceList/getInitialUnfilteredPlaceList';
 import didTravelTimesLoad from './didTravelTimesLoad';
 import getDisplayedPlaceList from './getDisplayedPlaceList/getDisplayedPlaceList';
+import getLocalStorage from './localStorageFunctions/getLocalStorage';
+import setLocalStorage from './localStorageFunctions/setLocalStorage';
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +45,10 @@ class App extends Component {
         setState: this.setState
       });
     }
+    const filters = getLocalStorage('filters');
+    if (!_.isEmpty(filters)) {
+      this.setState(() => ({ filters }));
+    }
   }
 
   shareLocationClicked = () => {
@@ -62,6 +69,7 @@ class App extends Component {
     const filters = this.state.filters;
     filters[name] = selected;
     this.setState(() => ({ filters }));
+    setLocalStorage('filters', filters);
   }
 
   render() {
