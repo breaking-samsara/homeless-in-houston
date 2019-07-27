@@ -5,6 +5,7 @@ import FirstLoadCard from '../FirstLoadCard/FirstLoadCard';
 import PlaceList from '../PlaceList/PlaceList';
 import Filters from '../Filters/Filters';
 import SortBy from '../SortBy/SortBy';
+import CollapseFiltersButton from '../CollapseFiltersButton/CollapseFiltersButton';
 
 const AppView = ({
   isFirstLoad,
@@ -15,11 +16,18 @@ const AppView = ({
   shareLocationClicked,
   onChooseFilter,
   onChooseSortBy,
+  toggleCollapseFilters,
   travelTimesFinishedLoading
 }) => (
   <>
     {isFirstLoad && <FirstLoadCard onClick={shareLocationClicked} />}
     {isFirstLoad || (
+      <CollapseFiltersButton
+        collapsed={filters.collapsed}
+        toggleCollapseFilters={toggleCollapseFilters}
+      />
+    )}
+    {isFirstLoad || filters.collapsed || (
       <>
         <Filters filters={filters} onChooseFilter={onChooseFilter} />
         <br />
