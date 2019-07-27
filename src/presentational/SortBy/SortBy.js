@@ -21,7 +21,7 @@ const SortBy = ({
         </Button>
       ))}
     </ButtonGroup>
-    <p>Selected: {selected}</p>
+    <br />
   </>
 );
 
