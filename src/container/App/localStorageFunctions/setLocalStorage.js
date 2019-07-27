@@ -1,5 +1,8 @@
 const setLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
+  if (typeof window !== `undefined`) {
+    // for `gatsby build` to succeed
+    localStorage.setItem(key, JSON.stringify(value));
+  }
 };
 
 export default setLocalStorage;

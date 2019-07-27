@@ -48,7 +48,7 @@ class App extends Component {
       });
     }
     const filters = getLocalStorage('filters');
-    if (!_.isEmpty(filters)) {
+    if (!filters) {
       this.setState(() => ({ filters }));
     }
   }
@@ -56,10 +56,7 @@ class App extends Component {
   shareLocationClicked = () => {
     const isFirstLoad = false;
     this.setState(() => ({ isFirstLoad }));
-    if (typeof window !== 'undefined') {
-      // for `gatsby build` to succeed
-      window.localStorage.setItem('isFirstLoad', isFirstLoad);
-    }
+    setLocalStorage('isFirstLoad', isFirstLoad);
     getPositionAndDurations({
       currentPosition: this.state.currentPosition,
       unfilteredPlaceList: this.state.unfilteredPlaceList,
