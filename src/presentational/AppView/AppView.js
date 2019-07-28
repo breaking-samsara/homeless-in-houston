@@ -34,6 +34,8 @@ const AppView = ({
           collapsed={filters.collapsed}
           toggleCollapseFilters={toggleCollapseFilters}
         />
+        <br />
+        <br />
         {filters.collapsed || (
           <PersonalFilters filters={filters} onChooseFilter={onChooseFilter} />
         )}
