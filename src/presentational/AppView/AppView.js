@@ -24,33 +24,33 @@ const AppView = ({
   travelTimesFinishedLoading
 }) => (
   <>
-    {isFirstLoad && <FirstLoadCard onClick={shareLocationClicked} />}
-    {isFirstLoad || (
-      <CollapseFiltersButton
-        collapsed={filters.collapsed}
-        toggleCollapseFilters={toggleCollapseFilters}
-      />
-    )}
-    {isFirstLoad || filters.collapsed || (
+    {isFirstLoad ? (
+      <FirstLoadCard onClick={shareLocationClicked} />
+    ) : (
       <>
-        <Filters filters={filters} onChooseFilter={onChooseFilter} />
-        <br />
-        <SortBy sortBy={sortBy} onChooseSortBy={onChooseSortBy} />
+        <CollapseFiltersButton
+          collapsed={filters.collapsed}
+          toggleCollapseFilters={toggleCollapseFilters}
+        />
+        {filters.collapsed || (
+          <Filters filters={filters} onChooseFilter={onChooseFilter} />
+        )}
+        <>
+          <br />
+          <SortBy sortBy={sortBy} onChooseSortBy={onChooseSortBy} />
+          <br />
+        </>
+        {travelTimesFinishedLoading ? (
+          <PlaceList
+            displayedPlaceList={displayedPlaceList}
+            currentPosition={currentPosition}
+          />
+        ) : (
+          <>
+            <Spinner style={{ marginLeft: '10em' }} color="purple" />
+          </>
+        )}
       </>
-    )}
-    {isFirstLoad || travelTimesFinishedLoading || (
-      <>
-        <br />
-        <Spinner style={{ marginLeft: '10em' }} color="purple" />
-      </>
-    )}
-    <br />
-    <br />
-    {travelTimesFinishedLoading && (
-      <PlaceList
-        displayedPlaceList={displayedPlaceList}
-        currentPosition={currentPosition}
-      />
     )}
   </>
 );
