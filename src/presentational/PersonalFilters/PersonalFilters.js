@@ -5,9 +5,8 @@ import Family from './Family/Family';
 import LGBT from './LGBT/LGBT';
 import Pets from './Pets/Pets';
 import Veteran from './Veteran/Veteran';
-import Services from './Services/Services';
 
-const Filters = ({
+const PersonalFilters = ({
   onChooseFilter,
   filters: {
     gender = '',
@@ -26,8 +25,7 @@ const Filters = ({
     <LGBT onChooseFilter={onChooseFilter} selected={lgbt} />
     <Pets onChooseFilter={onChooseFilter} selected={pets} />
     <Veteran onChooseFilter={onChooseFilter} selected={veteran} />
-    <Services onChooseFilter={onChooseFilter} selected={service} />
   </>
 );
 
-export default Filters;
+export default PersonalFilters;

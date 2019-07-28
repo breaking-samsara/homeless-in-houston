@@ -3,8 +3,9 @@ import { Spinner } from 'reactstrap';
 
 import FirstLoadCard from '../FirstLoadCard/FirstLoadCard';
 import PlaceList from '../PlaceList/PlaceList';
-import Filters from '../Filters/Filters';
+import PersonalFilters from '../PersonalFilters/PersonalFilters';
 import SortBy from '../SortBy/SortBy';
+import ServicesFilter from '../ServicesFilter/ServicesFilter';
 import CollapseFiltersButton from '../CollapseFiltersButton/CollapseFiltersButton';
 
 // 1) split Filters into PersonalFilters and Services. Services should be imported directly
@@ -14,6 +15,7 @@ import CollapseFiltersButton from '../CollapseFiltersButton/CollapseFiltersButto
 const AppView = ({
   isFirstLoad,
   filters,
+  filters: { service },
   sortBy,
   displayedPlaceList,
   currentPosition,
@@ -33,9 +35,10 @@ const AppView = ({
           toggleCollapseFilters={toggleCollapseFilters}
         />
         {filters.collapsed || (
-          <Filters filters={filters} onChooseFilter={onChooseFilter} />
+          <PersonalFilters filters={filters} onChooseFilter={onChooseFilter} />
         )}
         <>
+          <ServicesFilter selected={service} onChooseFilter={onChooseFilter} />
           <br />
           <SortBy sortBy={sortBy} onChooseSortBy={onChooseSortBy} />
           <br />

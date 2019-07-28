@@ -1,7 +1,7 @@
 import React from 'react';
-import BasicSelect from '../BasicSelect/BasicSelect';
+import BasicSelect from './BasicSelect/BasicSelect';
 
-const Services = props => (
+const ServicesFilter = props => (
   <BasicSelect
     label="What are you looking for?"
     name="service"
@@ -10,4 +10,4 @@ const Services = props => (
   />
 );
 
-export default Services;
+export default ServicesFilter;
