@@ -8,10 +8,6 @@ import SortBy from '../SortBy/SortBy';
 import ServicesFilter from '../ServicesFilter/ServicesFilter';
 import CollapseFiltersButton from '../CollapseFiltersButton/CollapseFiltersButton';
 
-// 1) split Filters into PersonalFilters and Services. Services should be imported directly
-// 2) SortBy should be rendered at the same time as Services, and should always be present
-// 3) refactor
-
 const AppView = ({
   isFirstLoad,
   filters,
