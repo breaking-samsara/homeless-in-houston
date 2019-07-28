@@ -7,6 +7,8 @@ import getPositionAndDurations from './getPositionAndDurations/getPositionAndDur
 import getInitialUnfilteredPlaceList from './getInitialUnfilteredPlaceList/getInitialUnfilteredPlaceList';
 import didTravelTimesLoad from './didTravelTimesLoad';
 import getDisplayedPlaceList from './getDisplayedPlaceList/getDisplayedPlaceList';
+import getLocalStorage from './localStorageFunctions/getLocalStorage';
+import setLocalStorage from './localStorageFunctions/setLocalStorage';
 
 class App extends Component {
   constructor(props) {
@@ -25,12 +27,16 @@ class App extends Component {
         lgbt: '',
         pets: '',
         veteran: '',
-        service: 'Night Shelter'
-      }
+        service: 'Night Shelter',
+        collapsed: false
+      },
+      sortBy: 'Walking Time'
     };
     this.setState = this.setState.bind(this);
     this.shareLocationClicked = this.shareLocationClicked.bind(this);
     this.onChooseFilter = this.onChooseFilter.bind(this);
+    this.onChooseSortBy = this.onChooseSortBy.bind(this);
+    this.toggleCollapseFilters = this.toggleCollapseFilters.bind(this);
   }
 
   componentDidMount() {
@@ -42,15 +48,17 @@ class App extends Component {
         setState: this.setState
       });
     }
+    const filters = getLocalStorage('filters');
+    if (filters) {
+      filters.collapsed = true;
+      this.setState(() => ({ filters }));
+    }
   }
 
   shareLocationClicked = () => {
     const isFirstLoad = false;
     this.setState(() => ({ isFirstLoad }));
-    if (typeof window !== 'undefined') {
-      // for `gatsby build` to succeed
-      window.localStorage.setItem('isFirstLoad', isFirstLoad);
-    }
+    setLocalStorage('isFirstLoad', isFirstLoad);
     getPositionAndDurations({
       currentPosition: this.state.currentPosition,
       unfilteredPlaceList: this.state.unfilteredPlaceList,
@@ -62,24 +70,49 @@ class App extends Component {
     const filters = this.state.filters;
     filters[name] = selected;
     this.setState(() => ({ filters }));
+    setLocalStorage('filters', filters);
+  }
+
+  onChooseSortBy({ selected }) {
+    const sortBy = selected;
+    this.setState(() => ({ sortBy }));
+  }
+
+  toggleCollapseFilters() {
+    let filters = this.state.filters;
+    filters.collapsed = !filters.collapsed;
+    this.setState(() => ({ filters }));
   }
 
   render() {
     const {
       isFirstLoad,
       filters,
+      sortBy,
       unfilteredPlaceList,
       currentPosition
     } = this.state;
-    const { shareLocationClicked, onChooseFilter } = this;
+    const {
+      shareLocationClicked,
+      onChooseFilter,
+      onChooseSortBy,
+      toggleCollapseFilters
+    } = this;
     return (
       <AppView
         isFirstLoad={isFirstLoad}
         filters={filters}
-        displayedPlaceList={getDisplayedPlaceList(unfilteredPlaceList, filters)}
+        sortBy={sortBy}
+        displayedPlaceList={getDisplayedPlaceList(
+          unfilteredPlaceList,
+          filters,
+          sortBy
+        )}
         currentPosition={currentPosition}
         shareLocationClicked={shareLocationClicked}
         onChooseFilter={onChooseFilter}
+        onChooseSortBy={onChooseSortBy}
+        toggleCollapseFilters={toggleCollapseFilters}
         travelTimesFinishedLoading={didTravelTimesLoad(unfilteredPlaceList)}
       />
     );

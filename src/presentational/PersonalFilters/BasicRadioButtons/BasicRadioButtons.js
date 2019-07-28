@@ -23,7 +23,8 @@ const BasicRadioButtons = ({
         </Button>
       ))}
     </ButtonGroup>
-    <p>Selected: {selected}</p>
+    <br />
+    <br />
   </>
 );
 

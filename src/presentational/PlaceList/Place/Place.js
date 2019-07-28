@@ -24,7 +24,7 @@ const Place = ({
             name={name}
           />
           <br />
-          <strong>{transitTime.text}</strong> taking bus/rail
+          <strong>around {transitTime.text}</strong> taking bus/rail
           <br />
           <DirectionsLink
             travelMode="transit"
