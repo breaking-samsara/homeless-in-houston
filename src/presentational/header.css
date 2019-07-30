@@ -23,3 +23,17 @@
     font-size: 1em;
   }
 }
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: #663399 !important;
+  border-color: #005cbf !important;
+}
+
+.btn-primary {
+  color: #fff !important;
+  background-color: #de668b !important;
+  border-color: #007bff !important;
+}
