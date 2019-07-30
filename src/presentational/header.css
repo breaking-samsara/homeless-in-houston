@@ -29,10 +29,11 @@
 .show > .btn-primary.dropdown-toggle {
   color: #fff !important;
   background-color: #663399 !important;
-  border-color: #005cbf !important;
+  border-color: #663399 !important;
 }
 
 .btn-primary {
   color: #fff !important;
   background-color: #de66a2 !important;
+  border-color: #fff;
 }
