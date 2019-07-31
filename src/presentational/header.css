@@ -37,3 +37,13 @@
   background-color: #de66a2 !important;
   border-color: #fff;
 }
+
+.btn-primary:hover {
+  border-color: #fff !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle :hover {
+  border-color: #fff !important;
+}
