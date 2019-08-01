@@ -17,9 +17,37 @@
   color: white;
 }
 
+.color-purple {
+  background-color: #663399 !important;
+}
+
 @media only screen and (max-width: 429px) {
   h1,
   .header {
-    font-size: 2em;
+    font-size: 1em;
   }
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: #663399 !important;
+  border-color: #fff !important;
+}
+
+.btn-primary {
+  color: #fff !important;
+  background-color: gray !important;
+  border-color: #fff !important;
+}
+
+.btn-primary:hover {
+  border-color: #fff !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle :hover {
+  border-color: #fff !important;
 }

@@ -14,7 +14,7 @@ const FirstLoadCard = ({ onClick }) => (
           to you.
         </CardText>
         <br />
-        <Button color="primary" onClick={onClick}>
+        <Button style={{ backgroundColor: '#663399' }} onClick={onClick}>
           Share location
         </Button>
       </CardBody>
