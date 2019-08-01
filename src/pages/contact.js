@@ -47,7 +47,11 @@ const ContactPage = () => {
           />
         </FormGroup>
 
-        <input class="btn btn-secondary" type="Submit" value="Submit" />
+        <input
+          className="color-purple btn btn-secondary "
+          type="Submit"
+          value="Submit"
+        />
       </Form>
     </Layout>
   );
