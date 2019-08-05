@@ -1,10 +1,6 @@
 import sortByWalkingTime from './sortByWalkingTime';
-import sortByTransitTime from './sortByTransitTime';
 
-const sortList = (displayedPlaceList, sortBy) => {
-  if (sortBy === 'Bus/Rail Time') {
-    return sortByTransitTime(displayedPlaceList);
-  }
+const sortList = displayedPlaceList => {
   return sortByWalkingTime(displayedPlaceList);
 };
 
