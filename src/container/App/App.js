@@ -29,13 +29,11 @@ class App extends Component {
         veteran: '',
         service: 'Night Shelter',
         collapsed: false
-      },
-      sortBy: 'Walking Time'
+      }
     };
     this.setState = this.setState.bind(this);
     this.shareLocationClicked = this.shareLocationClicked.bind(this);
     this.onChooseFilter = this.onChooseFilter.bind(this);
-    this.onChooseSortBy = this.onChooseSortBy.bind(this);
     this.toggleCollapseFilters = this.toggleCollapseFilters.bind(this);
   }
 
@@ -73,11 +71,6 @@ class App extends Component {
     setLocalStorage('filters', filters);
   }
 
-  onChooseSortBy({ selected }) {
-    const sortBy = selected;
-    this.setState(() => ({ sortBy }));
-  }
-
   toggleCollapseFilters() {
     let filters = this.state.filters;
     filters.collapsed = !filters.collapsed;
@@ -88,30 +81,22 @@ class App extends Component {
     const {
       isFirstLoad,
       filters,
-      sortBy,
       unfilteredPlaceList,
       currentPosition
     } = this.state;
     const {
       shareLocationClicked,
       onChooseFilter,
-      onChooseSortBy,
       toggleCollapseFilters
     } = this;
     return (
       <AppView
         isFirstLoad={isFirstLoad}
         filters={filters}
-        sortBy={sortBy}
-        displayedPlaceList={getDisplayedPlaceList(
-          unfilteredPlaceList,
-          filters,
-          sortBy
-        )}
+        displayedPlaceList={getDisplayedPlaceList(unfilteredPlaceList, filters)}
         currentPosition={currentPosition}
         shareLocationClicked={shareLocationClicked}
         onChooseFilter={onChooseFilter}
-        onChooseSortBy={onChooseSortBy}
         toggleCollapseFilters={toggleCollapseFilters}
         travelTimesFinishedLoading={didTravelTimesLoad(unfilteredPlaceList)}
       />

@@ -2,13 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardText } from 'reactstrap';
 import DirectionsLink from './DirectionsLink/DirectionsLink';
 
-const Place = ({
-  walkingTime,
-  transitTime = {},
-  latitude,
-  longitude,
-  name
-}) => (
+const Place = ({ walkingTime, latitude, longitude, name }) => (
   <>
     <Card>
       <CardBody>
@@ -19,15 +13,6 @@ const Place = ({
           <br />
           <DirectionsLink
             travelMode="walking"
-            latitude={latitude}
-            longitude={longitude}
-            name={name}
-          />
-          <br />
-          <strong>around {transitTime.text}</strong> taking bus/rail
-          <br />
-          <DirectionsLink
-            travelMode="transit"
             latitude={latitude}
             longitude={longitude}
             name={name}

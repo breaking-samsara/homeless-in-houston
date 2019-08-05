@@ -19,9 +19,6 @@ const getTravelDuration = ({
       if (travelMode === 'WALKING') {
         typeOfTime = 'walkingTime';
       }
-      if (travelMode === 'TRANSIT') {
-        typeOfTime = 'transitTime';
-      }
       for (let index = 0; index < destinations.length; index++) {
         const timeString = getTimeString(response, index);
         unfilteredPlaceList[index][typeOfTime] = {
