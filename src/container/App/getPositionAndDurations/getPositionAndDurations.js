@@ -28,10 +28,6 @@ const getPositionAndDurations = async ({
       travelMode: 'WALKING',
       ...getTravelDurationArgs
     });
-    getTravelDuration({
-      travelMode: 'TRANSIT',
-      ...getTravelDurationArgs
-    });
   } catch (e) {
     console.log('ERROR:', e);
   }
