@@ -17,34 +17,17 @@ const ContactPage = () => {
       >
         <FormGroup>
           <Label for="Name">Name:</Label>
-          <Input
-            required
-            type="name"
-            name="name"
-            id="name"
-            placeholder="Enter name"
-          />
+          <Input required type="name" name="name" id="name" />
         </FormGroup>
 
         <FormGroup>
           <Label for="email">Email:</Label>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter email"
-          />
+          <Input type="email" name="email" id="email" />
         </FormGroup>
 
         <FormGroup>
           <Label for="message">Message:</Label>
-          <Input
-            required
-            type="textarea"
-            name="message"
-            id="message"
-            placeholder="Enter message"
-          />
+          <Input required type="textarea" name="message" id="message" />
         </FormGroup>
 
         <input
