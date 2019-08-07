@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import Layout from '../presentational/layout';
+import { Link } from 'gatsby';
+
 import SEO from '../presentational/seo';
 
 const ContactPage = () => {
@@ -30,11 +32,20 @@ const ContactPage = () => {
           <Input required type="textarea" name="message" id="message" />
         </FormGroup>
 
-        <input
-          className="color-purple btn btn-secondary "
-          type="Submit"
-          value="Submit"
-        />
+        <div className="contact-us-back-wrapper">
+          <div>
+            <input
+              className="color-purple btn btn-secondary "
+              type="Submit"
+              value="Submit"
+            />
+          </div>
+          <div>
+            <Link to="/">
+              <i class="fas fa-chevron-circle-left"></i>Back to homepage
+            </Link>
+          </div>
+        </div>
       </Form>
     </Layout>
   );
