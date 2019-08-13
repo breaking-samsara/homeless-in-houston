@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import Layout from '../presentational/layout';
+import { Form, FormGroup, Input, Label } from 'reactstrap';
 import { Link } from 'gatsby';
 import ContactHeader from '../presentational/ContactHeader';
 
 import SEO from '../presentational/seo';
 
 const ContactPage = () => {
+  const isFirefox = typeof InstallTrigger !== 'undefined';
   return (
     <>
       <SEO title="contact" />
@@ -38,7 +38,12 @@ const ContactPage = () => {
 
           <FormGroup>
             <Label for="message">Message:</Label>
-            <Input required type="textarea" name="message" id="message" />
+            <Input
+              required={!isFirefox}
+              type="textarea"
+              name="message"
+              id="message"
+            />
           </FormGroup>
 
           <div className="contact-us-back-wrapper">
