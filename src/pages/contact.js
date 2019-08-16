@@ -1,59 +1,68 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import Layout from '../presentational/layout';
+import { Form, FormGroup, Input, Label } from 'reactstrap';
+import { Link } from 'gatsby';
+import ContactHeader from '../presentational/ContactHeader';
+
 import SEO from '../presentational/seo';
 
 const ContactPage = () => {
+  const isFirefox = typeof InstallTrigger !== 'undefined';
   return (
-    <Layout>
+    <>
       <SEO title="contact" />
 
-      <h4>Contact Page</h4>
-      <Form
-        name="contact"
-        method="POST"
-        netlify-honeypot="bot-field"
-        data-netlify="true"
+      <ContactHeader />
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `0px 1.0875rem 1.45rem`,
+          paddingTop: 0
+        }}
       >
-        <FormGroup>
-          <Label for="Name">Name:</Label>
-          <Input
-            required
-            type="name"
-            name="name"
-            id="name"
-            placeholder="Enter name"
-          />
-        </FormGroup>
+        <Form
+          name="contact"
+          method="POST"
+          netlify-honeypot="bot-field"
+          data-netlify="true"
+        >
+          <FormGroup>
+            <Label for="Name">Name:</Label>
+            <Input required type="name" name="name" id="name" />
+          </FormGroup>
 
-        <FormGroup>
-          <Label for="email">Email:</Label>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter email"
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label for="email">Email:</Label>
+            <Input type="email" name="email" id="email" />
+          </FormGroup>
 
-        <FormGroup>
-          <Label for="message">Message:</Label>
-          <Input
-            required
-            type="textarea"
-            name="message"
-            id="message"
-            placeholder="Enter message"
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label for="message">Message:</Label>
+            <Input
+              required={!isFirefox}
+              type="textarea"
+              name="message"
+              id="message"
+            />
+          </FormGroup>
 
-        <input
-          className="color-purple btn btn-secondary "
-          type="Submit"
-          value="Submit"
-        />
-      </Form>
-    </Layout>
+          <div className="contact-us-back-wrapper">
+            <div>
+              <input
+                className="color-purple btn btn-secondary "
+                type="Submit"
+                value="Submit"
+              />
+            </div>
+            <div>
+              <Link to="/">
+                <i class="fas fa-chevron-circle-left"></i>Back to homepage
+              </Link>
+            </div>
+          </div>
+        </Form>
+      </div>
+    </>
   );
 };
 
